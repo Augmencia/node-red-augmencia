@@ -1,0 +1,3 @@
+[submodule "protos/projects"]
+	path = protos/projects
+	url = git@github.com:Augmencia/common-projects-protos.git

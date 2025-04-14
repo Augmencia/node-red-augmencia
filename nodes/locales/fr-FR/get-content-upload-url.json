@@ -1,0 +1,9 @@
+{
+  "augmencia-get-content-upload-url" : {
+    "Get content upload URL": "Récupérer une URL de transfert de contenu",
+    "Name": "Name",
+    "Services": "Services",
+    "Upload data": "Données de transfert",
+    "Error": "Error"
+  }
+}

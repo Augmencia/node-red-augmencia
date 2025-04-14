@@ -1,0 +1,9 @@
+{
+  "augmencia-get-assets" : {
+    "Get assets": "Récupérer les ressources",
+    "Name": "Nom",
+    "Services": "Services",
+    "Assets": "Ressources",
+    "Error": "Erreur"
+  }
+}

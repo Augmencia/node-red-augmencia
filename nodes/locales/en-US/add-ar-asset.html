@@ -1,0 +1,72 @@
+<script type="text/markdown" data-help-name="augmencia-add-ar-asset">
+Add an Augmencia AR asset.
+
+### Input
+
+: payload (ARAssetWithProjectId) : The AR asset to add with the associated project's id
+
+### Outputs
+
+1. AR asset
+: payload (ARAsset) : The created AR asset
+
+2. Error
+: error (string) : The standard error message
+
+### Types
+
+#### ARAssetWithProjectId
+: projectId (string) : 
+: arAsset (ARAsset) : 
+
+#### ARAsset
+: id (string) : 
+: contextId (string) : 
+: parentId (string) : 
+: trackableId (string) : 
+: assetId (string) : 
+: creationDate (number) : Creation's unix timetstamp
+: modificationDate (number) : Last modification's unix timestamp
+: loop (AnimationLoop) : 
+: states (ARAssetState[]) : 
+: goToContextOnClick (string) : 
+: goToUrlOnClick (string) : 
+: dataToSendOnClick (string[]) :  
+
+### ARAssetState
+: localPosition(Vector3) : 
+: localRotation(Vector4) : 
+: localScale(Vector3) : 
+: anchor(Vector2) : 
+: color(Color) : 
+: nextStateInMs(number) : 
+
+### Vector2
+: x(number) : 
+: y(number) : 
+
+### Vector3
+: x(number) : 
+: y(number) : 
+: z(number) : 
+
+### Vector4
+: x(number) : 
+: y(number) : 
+: z(number) : 
+: w(number) : 
+
+### Color
+: r(number) : Value between [0,1]
+: g(number) : Value between [0,1]
+: b(number) : Value between [0,1]
+: a(number) : Value between [0,1]
+
+```
+enum AnimationLoop {
+  None = 0;
+  Restart = 1;
+  Yoyo = 2;
+}
+```
+</script>

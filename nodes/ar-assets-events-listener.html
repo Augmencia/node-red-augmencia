@@ -1,0 +1,27 @@
+<script type="text/javascript">
+  RED.nodes.registerType('augmencia-ar-assets-events-listener',{
+    category: 'augmencia',
+    color: '#c1ade5',
+    defaults: {
+      name: {value:""},
+      services: {value:"", type:"augmencia-services", required: true},
+    },
+    inputs: 1,
+    outputs: 1,
+    align: 'left',
+    icon: "font-awesome/fa-cube",
+    paletteLabel: function() {
+      return this._("augmencia-ar-assets-events-listener.AR assets events")
+    },
+    label: function() {
+        return `${this._("augmencia-ar-assets-events-listener.AR assets events")}: ${RED.nodes.node(this.services)?.name ?? this._("augmencia-ar-assets-events-listener.Services")}`;
+    }
+  });
+</script>
+
+<script type="text/html" data-template-name="augmencia-ar-assets-events-listener">
+  <div class="form-row">
+    <label for="node-input-services"><i class="fa fa-cube"></i> Augmencia</label>
+    <select id="node-input-services" data-i18n="[placeholder]augmencia-ar-assets-events-listener.Services">
+  </div>
+</script>

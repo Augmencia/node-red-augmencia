@@ -1,0 +1,34 @@
+<script type="text/javascript">
+  RED.nodes.registerType('augmencia-services',{
+    category: 'config',
+    color: '#c1ade5',
+    defaults: {
+      name: {value:"", required:true},
+      maxRequestsPerSeconds: {value: "", required: true, validate:RED.validators.number()}
+    },
+    credentials: {
+      apiKey: {type:"password", required:true},
+    },
+    paletteLabel: function() {
+      return this._("augmencia-services.Services")
+    },
+    label: function() {
+      return this.name;
+    }
+  });
+</script>
+
+<script type="text/html" data-template-name="augmencia-services">
+  <div class="form-row">
+      <label for="node-config-input-name"><i class="fa fa-tag"></i> <span data-i18n="augmencia-services.Name"/></label>
+      <input type="text" id="node-config-input-name" data-i18n="[placeholder]augmencia-services.Name">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-apiKey"><i class="fa fa-lock"></i> API-Key</label>
+    <input type="password" id="node-config-input-apiKey">
+  </div>
+  <div class="form-row">
+      <label for="node-config-input-maxRequestsPerSeconds"><i class="fa fa-clock-o"></i> <span data-i18n="augmencia-services.Max r/s"/></label>
+      <input type="text" type="number" id="node-config-input-maxRequestsPerSeconds" placeholder="5">
+  </div>
+</script>

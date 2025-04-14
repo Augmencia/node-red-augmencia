@@ -1,0 +1,69 @@
+<script type="text/markdown" data-help-name="augmencia-override-ar-asset">
+Override an Augmencia AR asset in a given context.
+
+### Input
+
+: payload (OverrideARAssetRequest) : The AR asset to override
+
+### Outputs
+
+1. AR asset overridden
+: payload (ARAssetOverride) : The overridden AR asset
+
+2. Error
+: error (string) : The standard error message
+
+### Types
+
+#### OverrideARAssetRequest
+: projectId (string) : 
+: override (ARAssetOverride) : 
+
+#### ARAssetOverride
+: arAssetId (string) : 
+: contextId (string) : 
+: creationDate (number) : Creation's unix timetstamp
+: modificationDate (number) : Last modification's unix timestamp
+: loop (AnimationLoop) : 
+: states (ARAssetState[]) : 
+: goToContextOnClick (string) : 
+: goToUrlOnClick (string) : 
+: dataToSendOnClick (string[]) :  
+
+### ARAssetState
+: localPosition(Vector3) : 
+: localRotation(Vector4) : 
+: localScale(Vector3) : 
+: anchor(Vector2) : 
+: color(Color) : 
+: nextStateInMs(number) : 
+
+### Vector2
+: x(number) : 
+: y(number) : 
+
+### Vector3
+: x(number) : 
+: y(number) : 
+: z(number) : 
+
+### Vector4
+: x(number) : 
+: y(number) : 
+: z(number) : 
+: w(number) : 
+
+### Color
+: r(number) : Value between [0,1]
+: g(number) : Value between [0,1]
+: b(number) : Value between [0,1]
+: a(number) : Value between [0,1]
+
+```
+enum AnimationLoop {
+  None = 0;
+  Restart = 1;
+  Yoyo = 2;
+}
+```
+</script>

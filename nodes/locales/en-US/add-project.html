@@ -1,0 +1,62 @@
+<script type="text/markdown" data-help-name="augmencia-add-project">
+Create an Augmencia project.
+
+### Input
+
+: payload (AddUserProjectRequest|AddOrganizationProjectRequest) : The project to add
+
+### Outputs
+
+1. Standard output
+: payload (Project) : the created project
+
+2. Standard error
+: error (string) : the standard error message
+
+### Types
+
+#### AddUserProjectRequest
+: name (string) : 
+: invitedUsersEmails (string[]) : 
+
+#### AddOrganizationProjectRequest
+: name (string) : 
+: organizationId (string) : 
+: users (ProjectUser[]) : 
+: organizationGroups (ProjectOrganizationGroup[]) : 
+: invitedUsersEmails (string[]) : 
+
+#### Project
+: id (string) : 
+: name (string) : 
+: creationDate (number) : Creation's unix timetstamp
+: modificationDate (number) : Last modification's unix timestamp
+: ownerId (string|undefined) : 
+: organization (string|undefined) : 
+: users (ProjectUser[]) : 
+: organizationGroups (ProjectOrganizationGroup[]) : 
+: invitedUsersEmails (string[]) : 
+: isLoadable (boolean) : 
+: projectSizeInMib (number) : 
+
+#### ProjectUser
+: id (string) : 
+: username (string) : 
+: canManageProject (boolean) :
+: canManageMembers (boolean) :
+: canManageAssets (boolean) : 
+: canManageArAssets (boolean) : 
+
+#### ProjectOrganizationGroup
+: id (string) : 
+: name (string) : 
+: users (ProjectOrganizationGroupUser[]) : 
+: canManageProject (boolean) :
+: canManageMembers (boolean) :
+: canManageAssets (boolean) : 
+: canManageArAssets (boolean) : 
+
+#### ProjectOrganizationGroupUser
+: id (string) : 
+: username (string) : 
+</script>

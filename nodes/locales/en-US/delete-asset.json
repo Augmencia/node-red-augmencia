@@ -1,0 +1,9 @@
+{
+  "augmencia-delete-asset" : {
+    "Delete asset": "Delete asset",
+    "Name": "Name",
+    "Services": "Services",
+    "Standard output": "Standard output",
+    "Error": "Error"
+  }
+}

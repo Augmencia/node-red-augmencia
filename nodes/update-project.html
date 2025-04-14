@@ -1,0 +1,40 @@
+<script type="text/javascript">
+  RED.nodes.registerType('augmencia-update-project',{
+    category: 'augmencia',
+    color: '#c1ade5',
+    defaults: {
+      name: {value:""},
+      services: {value:"", type:"augmencia-services", required: true},
+    },
+    inputs: 1,
+    outputs: 2,
+    outputLabels: function(index) {
+      switch (index) {
+        case 0:
+          return this._("augmencia-update-project.Project");
+        case 1:
+          return this._("augmencia-update-project.Error");
+      }
+      return '';
+    },
+    align: 'left',
+    icon: "font-awesome/fa-list-ul",
+    paletteLabel: function() {
+      return this._("augmencia-update-project.Update project")
+    },
+    label: function() {
+        return this.name||this._("augmencia-update-project.Update project");
+    }
+  });
+</script>
+
+<script type="text/html" data-template-name="augmencia-update-project">
+  <div class="form-row">
+      <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="augmencia-update-project.Name"/></label>
+      <input type="text" id="node-input-name" data-i18n="[placeholder]augmencia-update-project.Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-services"><i class="fa fa-cube"></i> Augmencia</label>
+    <select id="node-input-services" data-i18n="[placeholder]augmencia-update-project.Services">
+  </div>
+</script>

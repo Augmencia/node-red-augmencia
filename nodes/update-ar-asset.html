@@ -1,0 +1,40 @@
+<script type="text/javascript">
+  RED.nodes.registerType('augmencia-update-ar-asset',{
+    category: 'augmencia',
+    color: '#c1ade5',
+    defaults: {
+      name: {value:""},
+      services: {value:"", type:"augmencia-services", required: true},
+    },
+    inputs: 1,
+    outputs: 2,
+    outputLabels: function(index) {
+      switch (index) {
+        case 0:
+          return this._("augmencia-update-ar-asset.AR asset");
+        case 1:
+          return this._("augmencia-update-ar-asset.Error");
+      }
+      return '';
+    },
+    align: 'left',
+    icon: "font-awesome/fa-cube",
+    paletteLabel: function() {
+      return this._("augmencia-update-ar-asset.Update AR asset")
+    },
+    label: function() {
+        return this.name||this._("augmencia-update-ar-asset.Update AR asset");
+    }
+  });
+</script>
+
+<script type="text/html" data-template-name="augmencia-update-ar-asset">
+  <div class="form-row">
+      <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="augmencia-update-ar-asset.Name"/></label>
+      <input type="text" id="node-input-name" data-i18n="[placeholder]augmencia-update-ar-asset.Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-services"><i class="fa fa-cube"></i> Augmencia</label>
+    <select id="node-input-services" data-i18n="[placeholder]augmencia-update-ar-asset.Services">
+  </div>
+</script>

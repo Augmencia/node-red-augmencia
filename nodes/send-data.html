@@ -1,0 +1,40 @@
+<script type="text/javascript">
+  RED.nodes.registerType('augmencia-send-data',{
+    category: 'augmencia',
+    color: '#c1ade5',
+    defaults: {
+      name: {value:""},
+      services: {value:"", type:"augmencia-services", required: true},
+    },
+    inputs: 1,
+    outputs: 2,
+    outputLabels: function(index) {
+      switch (index) {
+        case 0:
+          return this._("augmencia-send-data.Success");
+        case 1:
+          return this._("augmencia-send-data.Error");
+      }
+      return '';
+    },
+    align: 'left',
+    icon: "font-awesome/fa-arrow-circle-up",
+    paletteLabel: function() {
+      return this._("augmencia-send-data.Send data")
+    },
+    label: function() {
+        return this.name||this._("augmencia-send-data.Send data");
+    }
+  });
+</script>
+
+<script type="text/html" data-template-name="augmencia-send-data">
+  <div class="form-row">
+      <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="augmencia-send-data.Name"/></label>
+      <input type="text" id="node-input-name" data-i18n="[placeholder]augmencia-send-data.Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-services"><i class="fa fa-cube"></i> Augmencia</label>
+    <select id="node-input-services" data-i18n="[placeholder]augmencia-send-data.Services">
+  </div>
+</script>

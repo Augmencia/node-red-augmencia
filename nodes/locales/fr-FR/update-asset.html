@@ -1,0 +1,140 @@
+<script type="text/markdown" data-help-name="augmencia-update-asset">
+Crée une ressource Augmencia.
+
+### Entrée
+
+: payload (AssetWithProjectId) : La ressource à modifier
+
+### Sorties
+
+1. Ressource
+: payload (Ressource) : La ressource modifiée
+
+2. Erreur 
+: error (string) : Le message d'erreur
+
+### Types
+
+#### AssetWithProjectId
+: projectId (string) : 
+: asset (Asset) : 
+
+#### Asset
+: folder (Folder|undefined) : 
+: context (Context|undefined) : 
+: image (Image|undefined) : 
+: text (Text|undefined) : 
+: object3D (Object3D|undefined) : 
+: item ("folder"|"context"|"image"|"text"|"object3D") : The assets's type
+
+#### Folder
+: id (string) : 
+: name (string) : 
+: parentId (string) : 
+: creationDate (number) : Creation's unix timetstamp
+: modificationDate (number) : Last modification's unix timestamp
+
+#### Context
+: id (string) : 
+: name (string) : 
+: parentId (string) : 
+: creationDate (number) : Creation's unix timetstamp
+: modificationDate (number) : Last modification's unix timestamp
+: includedContextsIds (string[]) : 
+: trackableTypes (TrackableType[]) : 
+: trackedImagesIds (string[]) : 
+: arAssetOverrides (ARAssetOverride[]) : 
+
+### Image
+: id (string) : 
+: name (string) : 
+: parentId (string) : 
+: creationDate (number) : Creation's unix timetstamp
+: modificationDate (number) : Last modification's unix timestamp
+: content (Content) : 
+
+### Text
+: id (string) : 
+: name (string) : 
+: parentId (string) : 
+: creationDate (number) : Creation's unix timetstamp
+: modificationDate (number) : Last modification's unix timestamp
+: text (string) : 
+
+### Object3D
+: id (string) : 
+: name (string) : 
+: parentId (string) : 
+: creationDate (number) : Creation's unix timetstamp
+: modificationDate (number) : Last modification's unix timestamp
+: content (Content) : 
+
+#### ARAssetOverride
+: arAssetId (string) : 
+: contextId (string) : 
+: creationDate (number) : Creation's unix timetstamp
+: modificationDate (number) : Last modification's unix timestamp
+: loop (AnimationLoop) : 
+: states (ARAssetState[]) :
+: goToContextOnClick (string) : 
+: goToUrlOnClick (string) : 
+: dataToSendOnClick (string[]) : 
+
+### ARAssetState
+: localPosition(Vector3) : 
+: localRotation(Vector4) : 
+: localScale(Vector3) : 
+: anchor(Vector2) : 
+: color(Color) : 
+: nextStateInMs(number) : 
+
+### Vector2
+: x(number) : 
+: y(number) : 
+
+### Vector3
+: x(number) : 
+: y(number) : 
+: z(number) : 
+
+### Vector4
+: x(number) : 
+: y(number) : 
+: z(number) : 
+: w(number) : 
+
+### Color
+: r(number) : Value between [0,1]
+: g(number) : Value between [0,1]
+: b(number) : Value between [0,1]
+: a(number) : Value between [0,1]
+
+### Content
+: id (string|undefined) : The id of the content hosted by Augmencia
+: url (string|undefined) : The url of the content (if not hosted by Augmencia)
+: data("id"|"url") : The content's type
+
+```
+enum TrackableType {
+  QRCode = 0;
+  AprilTag16h5 = 1;
+  AprilTag25h9 = 2;
+  AprilTag36h10 = 3;
+  AprilTag36h11 = 4;
+  AprilTagCircle21h7 = 5;
+  AprilTagCircle49h12 = 6;
+  AprilTagCustom48h12 = 7;
+  AprilTagStandard41h12 = 8;
+  AprilTagStandard52h13 = 9;
+  MarkerlessImage = 10;
+}
+```
+
+```
+enum AnimationLoop {
+  None = 0;
+  Restart = 1;
+  Yoyo = 2;
+}
+```
+</script>

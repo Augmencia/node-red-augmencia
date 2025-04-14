@@ -1,0 +1,9 @@
+{
+  "augmencia-add-asset" : {
+    "Add asset": "Ajouter une ressource",
+    "Name": "Nom",
+    "Services": "Services",
+    "Asset": "Ressource",
+    "Error": "Erreur"
+  }
+}

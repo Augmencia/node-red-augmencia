@@ -1,0 +1,9 @@
+{
+  "augmencia-get-content-download-url" : {
+    "Get content download URL": "Get content download URL",
+    "Name": "Name",
+    "Services": "Services",
+    "URL": "URL",
+    "Error": "Error"
+  }
+}

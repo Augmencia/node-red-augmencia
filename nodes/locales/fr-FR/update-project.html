@@ -1,0 +1,51 @@
+<script type="text/markdown" data-help-name="augmencia-update-project">
+Modifie un projet Augmencia.
+
+### Entrée
+
+: payload (Project) : Le projet à modifer
+
+### Sorties
+
+1. Projet
+: payload (Project) : Le projet modifié
+
+2. Erreur 
+: error (string) : Le message d'erreur
+
+### Types
+
+#### Project
+: id (string) : 
+: name (string) : 
+: creationDate (number) : Creation's unix timetstamp
+: modificationDate (number) : Last modification's unix timestamp
+: ownerId (string|undefined) : 
+: organization (string|undefined) : 
+: users (ProjectUser[]) : 
+: organizationGroups (ProjectOrganizationGroup[]) : 
+: invitedUsersEmails (string[]) : 
+: isLoadable (boolean) : 
+: projectSizeInMib (number) : 
+
+#### ProjectUser
+: id (string) : 
+: username (string) : 
+: canManageProject (boolean) :
+: canManageMembers (boolean) :
+: canManageAssets (boolean) : 
+: canManageArAssets (boolean) : 
+
+#### ProjectOrganizationGroup
+: id (string) : 
+: name (string) : 
+: users (ProjectOrganizationGroupUser[]) : 
+: canManageProject (boolean) :
+: canManageMembers (boolean) :
+: canManageAssets (boolean) : 
+: canManageArAssets (boolean) : 
+
+#### ProjectOrganizationGroupUser
+: id (string) : 
+: username (string) : 
+</script>

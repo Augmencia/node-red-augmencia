@@ -1,0 +1,9 @@
+{
+  "augmencia-override-ar-asset" : {
+    "Override AR asset": "Remplacer une ressource AR",
+    "Name": "Name",
+    "Services": "Services",
+    "AR asset overridden": "Ressource AR remplacée",
+    "Error": "Error"
+  }
+}

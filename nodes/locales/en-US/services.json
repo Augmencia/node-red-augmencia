@@ -1,0 +1,8 @@
+{
+  "augmencia-services" : {
+      "Services": "Services",
+      "Name": "Name",
+      "API Key": "API Key",
+      "Max r/s": "Max r/s"
+  }
+}

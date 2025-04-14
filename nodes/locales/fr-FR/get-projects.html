@@ -1,0 +1,48 @@
+<script type="text/markdown" data-help-name="augmencia-get-projects">
+Récupère les projets associés à la clé API donnée.
+
+### Sorties
+
+1. Projets
+: payload (Project[]) : les projets associés à la clé API donnée
+
+2. Erreur
+: error (string) : le message d'erreur standard
+
+### Types
+
+#### Project
+: id (string) : 
+: name (string) : 
+: creationDate (number) : Creation's unix timetstamp
+: modificationDate (number) : Last modification's unix timestamp
+: ownerId (string|undefined) : 
+: organization (string|undefined) : 
+: users (ProjectUser[]) : 
+: organizationGroups (ProjectOrganizationGroup[]) : 
+: invitedUsersEmails (string[]) : 
+: isLoadable (boolean) : 
+: projectSizeInMib (number) : 
+
+#### ProjectUser
+: id (string) : 
+: username (string) : 
+: canManageProject (boolean) :
+: canManageMembers (boolean) :
+: canManageAssets (boolean) : 
+: canManageArAssets (boolean) : 
+
+#### ProjectOrganizationGroup
+: id (string) : 
+: name (string) : 
+: users (ProjectOrganizationGroupUser[]) : 
+: canManageProject (boolean) :
+: canManageMembers (boolean) :
+: canManageAssets (boolean) : 
+: canManageArAssets (boolean) : 
+
+#### ProjectOrganizationGroupUser
+: id (string) : 
+: username (string) : 
+
+</script>
