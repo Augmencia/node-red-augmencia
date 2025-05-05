@@ -47,7 +47,7 @@ module.exports = function(RED) {
                 }
               })
               .on('data', function(ev) {
-                msg.payload = ev;
+                msg.payload = ev.value;
                 node.send(msg);
                 resolve();
               })
