@@ -8,38 +8,44 @@ module.exports = function(RED) {
       if (augmenciaServices)
       {
         node.on('input', async function(msg) {
-          await augmenciaServices.limiter.schedule(() => new Promise((resolve, reject) => {
-            const arAssets = [];
-            let error = undefined;
-            const metadata = new grpc.Metadata();
-            metadata.set('Authorization', `Bearer ${augmenciaServices.credentials.apiKey}`);
-            augmenciaServices.projectsService.GetARAssets(msg.payload, metadata)
-              .on('status', function(status) {
-                if (status.code === 0) {
-                  resolve();
-                }
-                else {
-                  reject(`Error: Status code ${status.code}`);
-                }
-              })
-              .on('data', function(arAsset) {
-                arAssets.push(arAsset);
-              })
-              .on('end', function() {
-                if (!error) {
-                  msg.payload = arAssets;
-                  node.send([msg, undefined]);
-                  resolve();
-                } else {
-                  msg.payload = error;
-                  node.send([undefined, msg]);
-                  reject(error);
-                }
-              })
-              .on('error', function(e) {
-                error = e;
-              });
-          }))
+          try
+          {
+            await augmenciaServices.limiter.schedule(() => new Promise((resolve, reject) => {
+              const arAssets = [];
+              let error = undefined;
+              const metadata = new grpc.Metadata();
+              metadata.set('Authorization', `Bearer ${augmenciaServices.credentials.apiKey}`);
+              augmenciaServices.projectsService.GetARAssets(msg.payload, metadata)
+                .on('status', function(status) {
+                  if (status.code === 0) {
+                    resolve();
+                  }
+                  else {
+                    reject(`Error: Status code ${status.code}`);
+                  }
+                })
+                .on('data', function(arAsset) {
+                  arAssets.push(arAsset);
+                })
+                .on('end', function() {
+                  if (!error) {
+                    msg.payload = arAssets;
+                    node.send([msg, undefined]);
+                    resolve();
+                  } else {
+                    reject(error);
+                  }
+                })
+                .on('error', function(e) {
+                  error = e;
+                });
+            }))
+          }
+          catch (err)
+          {
+            msg.payload = err;
+            node.send([undefined, msg]);
+          }
         });
       }
       else

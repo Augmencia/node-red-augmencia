@@ -7,39 +7,45 @@ module.exports = function(RED) {
       const augmenciaServices = RED.nodes.getNode(config.services);
       if (augmenciaServices)
       {
-        node.on('input', function(msg) {
-          augmenciaServices.limiter.schedule(() => new Promise((resolve, reject) => {
-            const assets = [];
-            let error = undefined;
-            const metadata = new grpc.Metadata();
-            metadata.set('Authorization', `Bearer ${augmenciaServices.credentials.apiKey}`);
-            augmenciaServices.projectsService.GetAssetsFromProject({value: msg.payload}, metadata)
-              .on('status', function(status) {
-                if (status.code === 0) {
-                  resolve();
-                }
-                else {
-                  reject(`Error: Status code ${status.code}`);
-                }
-              })
-              .on('data', function(asset) {
-                assets.push(asset);
-              })
-              .on('end', function() {
-                if (!error) {
-                  msg.payload = assets;
-                  node.send([msg, undefined]);
-                  resolve();
-                } else {
-                  msg.payload = error;
-                  node.send([undefined, msg]);
-                  reject(error);
-                }
-              })
-              .on('error', function(e) {
-                error = e;
-              });
-          }))
+        node.on('input', async function(msg) {
+          try
+          {
+            await augmenciaServices.limiter.schedule(() => new Promise((resolve, reject) => {
+              const assets = [];
+              let error = undefined;
+              const metadata = new grpc.Metadata();
+              metadata.set('Authorization', `Bearer ${augmenciaServices.credentials.apiKey}`);
+              augmenciaServices.projectsService.GetAssetsFromProject({value: msg.payload}, metadata)
+                .on('status', function(status) {
+                  if (status.code === 0) {
+                    resolve();
+                  }
+                  else {
+                    reject(`Error: Status code ${status.code}`);
+                  }
+                })
+                .on('data', function(asset) {
+                  assets.push(asset);
+                })
+                .on('end', function() {
+                  if (!error) {
+                    msg.payload = assets;
+                    node.send([msg, undefined]);
+                    resolve();
+                  } else {
+                    reject(error);
+                  }
+                })
+                .on('error', function(e) {
+                  error = e;
+                });
+            }))
+          }
+          catch (err)
+          {
+            msg.payload = err;
+            node.send([undefined, msg]);
+          }
         });
       }
       else
