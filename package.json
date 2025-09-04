@@ -4,10 +4,12 @@
   "description": "Communicate with Augmencia's API using Node-RED",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-container": "docker run -d -p 1880:1880 -v .:/augmencia -v ./node_red_data:/data --name node-red-augmencia nodered/node-red && docker exec -w /data node-red-augmencia npm install /augmencia",
+    "start-container": "docker run -d -p 1880:1880 -v .:/augmencia -v ./node_red_data:/data -v ./gcodes:/gcodes --name node-red-augmencia nodered/node-red && docker exec -w /data node-red-augmencia npm install /augmencia",
+    "start-demo-container": "docker run -d -p 1880:1880 -v .:/augmencia --privileged -v ./node_red_data:/data -v ./gcodes:/gcodes -v \"/Volumes/NO NAME:/sdcard\" --name node-red-augmencia nodered/node-red && docker exec -w /data node-red-augmencia npm install /augmencia",
     "stop-container": "docker stop node-red-augmencia;docker rm node-red-augmencia",
     "restart-container": "docker restart node-red-augmencia",
-    "debug": "npm run start-container && nodemon --ignore node_red_data --ext html,js,json,proto --exec 'npm run restart-container';npm run stop-container"
+    "debug": "npm run start-container && nodemon --ignore node_red_data --ext html,js,json,proto --exec 'npm run restart-container';npm run stop-container",
+    "demo": "npm run start-demo-container && nodemon --ignore node_red_data --ext html,js,json,proto --exec 'npm run restart-container';npm run stop-container"
   },
   "keywords": [
     "augmencia",

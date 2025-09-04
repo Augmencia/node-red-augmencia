@@ -1,9 +1,8 @@
 {
   "augmencia-send-data" : {
     "Send data": "Envoyer des données",
-    "Name": "Name",
+    "Name": "Nom",
     "Services": "Services",
-    "Success": "Succès",
-    "Error": "Erreur"
+    "Success": "Succès"
   }
 }

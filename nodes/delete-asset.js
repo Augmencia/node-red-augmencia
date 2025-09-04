@@ -22,17 +22,16 @@ module.exports = function(RED) {
               })
             }));
             msg.payload = undefined;
-            node.send([msg, undefined]);
+            node.send(msg);
           } catch (err) {
-            msg.payload = err;
-            node.send([undefined, msg]);
+            node.error(err, msg);
           }
         });
       }
       else
       {
         node.on('input', function() {
-          node.error(config.services + " not found");
+          node.error(config.services + " not found", msg);
         });
       }
   }

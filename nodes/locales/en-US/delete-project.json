@@ -2,8 +2,6 @@
   "augmencia-delete-project" : {
     "Delete project": "Delete project",
     "Name": "Name",
-    "Services": "Services",
-    "Standard output": "Standard output",
-    "Error": "Error"
+    "Services": "Services"
   }
 }

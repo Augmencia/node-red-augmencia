@@ -38,7 +38,7 @@ module.exports = function(RED) {
             })
             .on('error', function(e) {
               if (!isClosed) {
-                node.error(e);
+                node.error(e, msg);
               }
             });
             setTimeout(resolve, 1000);
@@ -56,7 +56,7 @@ module.exports = function(RED) {
     else
     {
       node.on('input', function() {
-        node.error(config.services + " not found");
+        node.error(config.services + " not found", msg);
       });
     }
   }

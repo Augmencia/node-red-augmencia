@@ -1,9 +1,8 @@
 {
   "augmencia-get-content-download-url" : {
     "Get content download URL": "Récupérer une URL de téléchargement de contenu",
-    "Name": "Name",
+    "Name": "Nom",
     "Services": "Services",
-    "URL": "URL",
-    "Error": "Error"
+    "URL": "URL"
   }
 }

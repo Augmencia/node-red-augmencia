@@ -7,16 +7,7 @@
       services: {value:"", type:"augmencia-services", required: true},
     },
     inputs: 1,
-    outputs: 2,
-    outputLabels: function(index) {
-      switch (index) {
-        case 0:
-          return this._("augmencia-add-ar-asset.AR Asset");
-        case 1:
-          return this._("augmencia-add-ar-asset.Error");
-      }
-      return '';
-    },
+    outputs: 1,
     align: 'left',
     icon: "font-awesome/fa-cube",
     paletteLabel: function() {

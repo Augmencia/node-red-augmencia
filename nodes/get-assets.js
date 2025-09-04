@@ -30,7 +30,7 @@ module.exports = function(RED) {
                 .on('end', function() {
                   if (!error) {
                     msg.payload = assets;
-                    node.send([msg, undefined]);
+                    node.send(msg);
                     resolve();
                   } else {
                     reject(error);
@@ -43,15 +43,14 @@ module.exports = function(RED) {
           }
           catch (err)
           {
-            msg.payload = err;
-            node.send([undefined, msg]);
+            node.error(err, msg);
           }
         });
       }
       else
       {
         node.on('input', function() {
-          node.error(config.services + " not found");
+          node.error(config.services + " not found", msg);
         });
       }
   }
