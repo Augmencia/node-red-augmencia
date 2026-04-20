@@ -4,15 +4,15 @@ module.exports = function(RED) {
   function AddProjectNode(config) {
       RED.nodes.createNode(this,config);
       const node = this;
-      const augmenciaServices = RED.nodes.getNode(config.services);
-      if (augmenciaServices)
+      const augmenciaApi = RED.nodes.getNode(config.api);
+      if (augmenciaApi)
       {
         node.on('input', async function(msg) {
           try
           {
             const metadata = new grpc.Metadata();
-            metadata.set('Authorization', `Bearer ${augmenciaServices.credentials.apiKey}`);
-            msg.payload = await augmenciaServices.limiter.schedule(() => new Promise(function(resolve, reject) {
+            metadata.set('Authorization', `Bearer ${augmenciaApi.credentials.apiKey}`);
+            msg.payload = await augmenciaApi.limiter.schedule(() => new Promise(function(resolve, reject) {
               try {
                 const callback = function(err, project) {
                   if (err) {
@@ -21,11 +21,12 @@ module.exports = function(RED) {
                     resolve(project);
                   }
                 };
-                if (augmenciaServices.apiKeyPayload.organizationId) {
-                  const request = {...msg.payload, organizationId: augmenciaServices.apiKeyPayload.organizationId};
-                  augmenciaServices.projectsService.AddOrganizationProjectAsync(request, metadata, callback)
+                if (augmenciaApi.apiKeyPayload.sub.startsWith('organization:')) {
+                  const request = {...msg.payload, organization_id: augmenciaApi.apiKeyPayload.sub.substring('organization:'.length)};
+                  augmenciaApi.api.AddOrganizationProjectAsync(request, metadata, callback)
                 } else {
-                  augmenciaServices.projectsService.AddUserProject(msg.payload, metadata, callback)
+                  console.log(msg.payload)
+                  augmenciaApi.api.AddUserProject(msg.payload, metadata, callback)
                 }
               }
               catch (err) {
@@ -41,7 +42,7 @@ module.exports = function(RED) {
       else
       {
         node.on('input', function() {
-          node.error(config.services + " not found", msg);
+          node.error(config.api + " not found", msg);
         });
       }
   }

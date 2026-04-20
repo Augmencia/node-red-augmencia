@@ -10,32 +10,32 @@ Get projects associated to the given API-Key.
 #### Project
 : id (string) : 
 : name (string) : 
-: creationDate (number) : Creation's unix timetstamp
-: modificationDate (number) : Last modification's unix timestamp
-: ownerId (string|undefined) : 
+: creation_date (number) : Creation's unix timetstamp
+: modification_date (number) : Last modification's unix timestamp
+: owner_id (string|undefined) : 
 : organization (string|undefined) : 
 : users (ProjectUser[]) : 
-: organizationGroups (ProjectOrganizationGroup[]) : 
-: invitedUsersEmails (string[]) : 
-: isLoadable (boolean) : 
-: projectSizeInMib (number) : 
+: organization_groups (ProjectOrganizationGroup[]) : 
+: invited_users_emails (string[]) : 
+: is_loadable (boolean) : 
+: project_size_in_mib (number) : 
 
 #### ProjectUser
 : id (string) : 
 : username (string) : 
-: canManageProject (boolean) :
-: canManageMembers (boolean) :
-: canManageAssets (boolean) : 
-: canManageArAssets (boolean) : 
+: can_manage_project (boolean) :
+: can_manage_members (boolean) :
+: can_manage_assets (boolean) : 
+: can_manage_ar_assets (boolean) : 
 
 #### ProjectOrganizationGroup
 : id (string) : 
 : name (string) : 
 : users (ProjectOrganizationGroupUser[]) : 
-: canManageProject (boolean) :
-: canManageMembers (boolean) :
-: canManageAssets (boolean) : 
-: canManageArAssets (boolean) : 
+: can_manage_project (boolean) :
+: can_manage_members (boolean) :
+: can_manage_assets (boolean) : 
+: can_manage_ar_assets (boolean) : 
 
 #### ProjectOrganizationGroupUser
 : id (string) : 

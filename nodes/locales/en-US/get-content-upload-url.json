@@ -2,7 +2,7 @@
   "augmencia-get-content-upload-url" : {
     "Get content upload URL": "Get content upload URL",
     "Name": "Name",
-    "Services": "Services",
+    "Api": "API",
     "Upload data": "Upload data"
   }
 }

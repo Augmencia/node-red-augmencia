@@ -2,7 +2,7 @@
   "augmencia-get-projects" : {
     "Get projects": "Get projects",
     "Name": "Name",
-    "Services": "Services",
+    "Api": "API",
     "Projects": "Projects"
   }
 }

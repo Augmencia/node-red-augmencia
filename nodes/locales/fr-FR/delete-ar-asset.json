@@ -2,6 +2,6 @@
   "augmencia-delete-ar-asset" : {
     "Delete AR asset": "Supprimer une ressource AR",
     "Name": "Nom",
-    "Services": "Services"
+    "Api": "API"
   }
 }

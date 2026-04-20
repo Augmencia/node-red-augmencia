@@ -4,7 +4,7 @@
     color: '#c1ade5',
     defaults: {
       name: {value:""},
-      services: {value:"", type:"augmencia-services", required: true},
+      api: {value:"", type:"augmencia-api", required: true},
     },
     outputs: 1,
     align: 'left',
@@ -13,14 +13,14 @@
       return this._("augmencia-health-listener.Health")
     },
     label: function() {
-        return `${this._("augmencia-health-listener.Health")}: ${RED.nodes.node(this.services)?.name ?? this._("augmencia-health-listener.Services")}`;
+        return `${this._("augmencia-health-listener.Health")}: ${RED.nodes.node(this.api)?.name ?? this._("augmencia-health-listener.Api")}`;
     }
   });
 </script>
 
 <script type="text/html" data-template-name="augmencia-health-listener">
   <div class="form-row">
-    <label for="node-input-services"><i class="fa fa-cube"></i> Augmencia</label>
-    <select id="node-input-services" data-i18n="[placeholder]augmencia-health-listener.Services">
+    <label for="node-input-api"><i class="fa fa-cube"></i> Augmencia</label>
+    <select id="node-input-api" data-i18n="[placeholder]augmencia-health-listener.Api">
   </div>
 </script>

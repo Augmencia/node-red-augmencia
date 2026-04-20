@@ -1,0 +1,27 @@
+<script type="text/javascript">
+  RED.nodes.registerType('augmencia-events-listener',{
+    category: 'augmencia',
+    color: '#c1ade5',
+    defaults: {
+      name: {value:""},
+      api: {value:"", type:"augmencia-api", required: true},
+    },
+    inputs: 1,
+    outputs: 1,
+    align: 'left',
+    icon: "font-awesome/fa-list-ul",
+    paletteLabel: function() {
+      return this._("augmencia-events-listener.Events")
+    },
+    label: function() {
+        return `${this._("augmencia-events-listener.Events")}: ${RED.nodes.node(this.api)?.name ?? this._("augmencia-events-listener.Api")}`;
+    }
+  });
+</script>
+
+<script type="text/html" data-template-name="augmencia-events-listener">
+  <div class="form-row">
+    <label for="node-input-api"><i class="fa fa-cube"></i> Augmencia</label>
+    <select id="node-input-api" data-i18n="[placeholder]augmencia-events-listener.Api">
+  </div>
+</script>

@@ -2,7 +2,7 @@
   "augmencia-get-ar-assets" : {
     "Get AR assets": "Récupérer les ressources AR",
     "Name": "Nom",
-    "Services": "Services",
+    "Api": "API",
     "AR assets": "Ressources AR"
   }
 }

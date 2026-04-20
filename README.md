@@ -7,7 +7,7 @@ This project provides a suite of nodes and tools for integrating Augmencia's cap
 ## Features
 
 - Seamless integration of Augmencia's features within Node-RED.
-- Custom nodes for connecting with Augmencia's APIs and services.
+- Custom nodes for connecting with Augmencia's API.
 
 ## Installation
 
@@ -24,7 +24,7 @@ npm install node-red-augmencia
 
 1. Drag and drop the Augmencia nodes from the palette into your flow.
 2. Configure the nodes according to your needs using the provided properties panel.
-3. Deploy your flow to start utilizing the Augmencia services as part of your Node-RED applications.
+3. Deploy your flow to start utilizing the Augmencia API as part of your Node-RED applications.
 
 ## Contributing
 

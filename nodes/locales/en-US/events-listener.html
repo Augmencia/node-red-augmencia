@@ -1,0 +1,216 @@
+<script type="text/markdown" data-help-name="augmencia-events-listener">
+Inform of Augmencia events.
+
+### Output
+
+: payload (Event) : The event
+
+### Types
+
+#### Scope
+: projects (boolean) : 
+: assets (string[]) : The id of the projects from which we want assets events
+: ar_assets (ContextsIdsWithProjectId[]) : The id of the contexts from which we want AR assets events
+: data (string[]) : The id of the projects from which we want data events
+
+#### ContextsIdsWithProjectId
+: project_id (string) : 
+: contexts_ids (string[]) : 
+
+#### Event
+: event ("stream_id"|"project_event"|"asset_event"|"ar_asset_event"|"data") : The event's type
+: stream_id (string|undefined) : 
+: project_event (ProjectEvent|undefined) : 
+: asset_event (AssetEvent|undefined) : 
+: ar_asset_event (ARAssetEvent|undefined) : 
+: data (string|undefined) : 
+
+#### ProjectEvent
+: event ("added"|"modified"|"deleted") : The event's type
+: added (Project|undefined) : 
+: modified (Project|undefined) : 
+: deleted (string|undefined) : 
+
+#### AssetEvent
+: event ("added"|"modified"|"deleted") : The event's type
+: added (Asset|undefined) : 
+: modified (Asset|undefined) : 
+: deleted (string|undefined) : 
+
+#### ARAssetEvent
+: event ("added"|"modified"|"deleted") : The event's type
+: added (ARAsset|undefined) : 
+: modified (ARAsset|undefined) : 
+: deleted (ARAssetIdWithContextId|undefined) : 
+
+#### Project
+: id (string) : 
+: name (string) : 
+: creation_date (number) : Creation's unix timetstamp
+: modification_date (number) : Last modification's unix timestamp
+: owner_id (string|undefined) : 
+: organization (string|undefined) : 
+: users (ProjectUser[]) : 
+: organization_groups (ProjectOrganizationGroup[]) : 
+: invited_users_emails (string[]) : 
+: is_loadable (boolean) : 
+: project_size_in_mib (number) : 
+
+#### ProjectUser
+: id (string) : 
+: username (string) : 
+: can_manage_project (boolean) :
+: can_manage_members (boolean) :
+: can_manage_assets (boolean) : 
+: can_manage_ar_assets (boolean) : 
+
+#### ProjectOrganizationGroup
+: id (string) : 
+: name (string) : 
+: users (ProjectOrganizationGroupUser[]) : 
+: can_manage_project (boolean) :
+: can_manage_members (boolean) :
+: can_manage_assets (boolean) : 
+: can_manage_ar_assets (boolean) : 
+
+#### ProjectOrganizationGroupUser
+: id (string) : 
+: username (string) : 
+
+#### Asset
+: item ("folder"|"context"|"image"|"text"|"object3D") : The asset's type
+: folder (Folder|undefined) : 
+: context (Context|undefined) : 
+: image (Image|undefined) : 
+: text (Text|undefined) : 
+: object3D (Object3D|undefined) : 
+
+#### Folder
+: id (string) : 
+: name (string) : 
+: parent_id (string|undefined) : 
+: creation_date (number) : Creation's unix timetstamp
+: modification_date (number) : Last modification's unix timestamp
+
+#### Context
+: id (string) : 
+: name (string) : 
+: parent_id (string|undefined) : 
+: creation_date (number) : Creation's unix timetstamp
+: modification_date (number) : Last modification's unix timestamp
+: included_contexts_ids (string[]) : 
+: trackable_types (TrackableType[]) :
+: tracked_images_ids (string[]) :
+: ar_asset_overrides (ARAssetOverride[]) :
+
+#### Image
+: id (string) : 
+: name (string) : 
+: parent_id (string|undefined) : 
+: creation_date (number) : Creation's unix timetstamp
+: modification_date (number) : Last modification's unix timestamp
+: content (Content) : 
+
+#### Text
+: id (string) : 
+: name (string) : 
+: parent_id (string|undefined) : 
+: creation_date (number) : Creation's unix timetstamp
+: modification_date (number) : Last modification's unix timestamp
+: text (string) : 
+
+#### Object3D
+: id (string) : 
+: name (string) : 
+: parent_id (string|undefined) : 
+: creation_date (number) : Creation's unix timetstamp
+: modification_date (number) : Last modification's unix timestamp
+: content (Content) : 
+
+#### ARAssetOverride 
+: ar_asset_id (string) : 
+: context_id (string) : 
+: creation_date (number) : 
+: modification_date (number) : 
+: loop (AnimationLoop) : 
+: states (ARAssetState[]) : 
+: go_to_context_on_click (string) : 
+: go_to_url_on_click (string) : 
+: data_to_send_on_click (string[]) : 
+
+#### ARAssetState
+: local_position (Vector3) : 
+: local_rotation (Vector4) : 
+: local_scale (Vector3) : 
+: anchor (Vector2) : 
+: color (Color) : 
+: next_state_in_ms (number) : 
+
+#### Vector2
+: x (number) : 
+: y (number) : 
+
+#### Vector3
+: x (number) : 
+: y (number) : 
+: z (number) : 
+
+#### Vector4
+: w (number) : 
+: x (number) : 
+: y (number) : 
+: z (number) : 
+
+#### Color
+: r (number) : 
+: g (number) : 
+: b (number) : 
+: a (number) : 
+
+#### Content
+: data ("id"|"url") : 
+: id (string) : 
+: url (string) : 
+
+#### ARAsset
+: id (string) : 
+: context_id (string) : 
+: parent_id (string|undefined) : 
+: trackable_id (string) : 
+: asset_id (string) : 
+: creation_date (number) : 
+: modification_date (number) : 
+: loop (AnimationLoop) : 
+: states (ARAssetState[]) : 
+: go_to_context_on_click (string) : 
+: go_to_url_on_click (string) : 
+: data_to_send_on_click (string[]) : 
+
+#### ARAssetIdWithContextId
+: context_id (string) : 
+: ar_asset_id (string) : 
+
+```
+enum TrackableType {
+    QR_CODE = 0;
+    APRILTAG_16H5 = 1;
+    APRILTAG_25H9 = 2;
+    APRILTAG_36H10 = 3;
+    APRILTAG_36H11 = 4;
+    APRILTAG_CIRCLE21H7 = 5;
+    APRILTAG_CIRCLE49H12 = 6;
+    APRILTAG_CUSTOM48H12 = 7;
+    APRILTAG_STANDARD41H12 = 8;
+    APRILTAG_STANDARD52H13 = 9;
+    MARKERLESS_IMAGE = 10;
+}
+```
+
+```
+enum AnimationLoop {
+    NONE = 0;
+    RESTART = 1;
+    YOYO = 2;
+}
+```
+</script>

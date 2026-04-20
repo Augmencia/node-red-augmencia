@@ -2,7 +2,7 @@
   "augmencia-get-projects" : {
     "Get projects": "Récupérer les projets",
     "Name": "Nom",
-    "Services": "Services",
+    "Api": "API",
     "Projects": "Projets"
   }
 }

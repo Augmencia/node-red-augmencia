@@ -12,57 +12,57 @@ Get Augmencia contexts AR assets.
 ### Types
 
 #### ContextsIdsWithProjectId
-: projectId (string) : 
-: contextsIds (string[]) : 
+: project_id (string) : 
+: contexts_ids (string[]) : 
 
 #### ARAsset
 : id (string) : 
-: contextId (string) : 
-: parentId (string) : 
-: trackableId (string) : 
-: assetId (string) : 
-: creationDate (number) : Creation's unix timetstamp
-: modificationDate (number) : Last modification's unix timestamp
+: context_id (string) : 
+: parent_id (string|undefined) : 
+: trackable_id (string) : 
+: asset_id (string) : 
+: creation_date (number) : 
+: modification_date (number) : 
 : loop (AnimationLoop) : 
 : states (ARAssetState[]) : 
-: goToContextOnClick (string) : 
-: goToUrlOnClick (string) : 
-: dataToSendOnClick (string[]) :  
+: go_to_context_on_click (string) : 
+: go_to_url_on_click (string) : 
+: data_to_send_on_click (string[]) : 
 
-### ARAssetState
-: localPosition(Vector3) : 
-: localRotation(Vector4) : 
-: localScale(Vector3) : 
-: anchor(Vector2) : 
-: color(Color) : 
-: nextStateInMs(number) : 
+#### ARAssetState
+: local_position (Vector3) : 
+: local_rotation (Vector4) : 
+: local_scale (Vector3) : 
+: anchor (Vector2) : 
+: color (Color) : 
+: next_state_in_ms (number) : 
 
-### Vector2
-: x(number) : 
-: y(number) : 
+#### Vector2
+: x (number) : 
+: y (number) : 
 
-### Vector3
-: x(number) : 
-: y(number) : 
-: z(number) : 
+#### Vector3
+: x (number) : 
+: y (number) : 
+: z (number) : 
 
-### Vector4
-: x(number) : 
-: y(number) : 
-: z(number) : 
-: w(number) : 
+#### Vector4
+: w (number) : 
+: x (number) : 
+: y (number) : 
+: z (number) : 
 
-### Color
-: r(number) : Value between [0,1]
-: g(number) : Value between [0,1]
-: b(number) : Value between [0,1]
-: a(number) : Value between [0,1]
+#### Color
+: r (number) : 
+: g (number) : 
+: b (number) : 
+: a (number) : 
 
 ```
 enum AnimationLoop {
-  None = 0;
-  Restart = 1;
-  Yoyo = 2;
+    NONE = 0;
+    RESTART = 1;
+    YOYO = 2;
 }
 ```
 </script>

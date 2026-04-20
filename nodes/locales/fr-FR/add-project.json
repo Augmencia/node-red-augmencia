@@ -2,7 +2,7 @@
   "augmencia-add-project" : {
     "Add project": "Ajouter un projet",
     "Name": "Nom",
-    "Services": "Services",
+    "Api": "API",
     "Project": "Projet"
   }
 }

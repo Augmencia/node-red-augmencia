@@ -2,7 +2,7 @@
   "augmencia-get-assets" : {
     "Get assets": "Get assets",
     "Name": "Name",
-    "Services": "Services",
+    "Api": "API",
     "Assets": "Assets"
   }
 }

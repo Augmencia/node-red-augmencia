@@ -4,17 +4,17 @@ module.exports = function(RED) {
   function GetContentDownloadUrlNode(config) {
       RED.nodes.createNode(this,config);
       const node = this;
-      const augmenciaServices = RED.nodes.getNode(config.services);
-      if (augmenciaServices)
+      const augmenciaApi = RED.nodes.getNode(config.api);
+      if (augmenciaApi)
       {
         node.on('input', async function(msg) {
           try
           {
             const metadata = new grpc.Metadata();
-            metadata.set('Authorization', `Bearer ${augmenciaServices.credentials.apiKey}`);
-            msg.payload = await augmenciaServices.limiter.schedule(() => new Promise(function(resolve, reject) {
+            metadata.set('Authorization', `Bearer ${augmenciaApi.credentials.apiKey}`);
+            msg.payload = await augmenciaApi.limiter.schedule(() => new Promise(function(resolve, reject) {
               try {
-                augmenciaServices.projectsService.GetContentDownloadUrl(msg.payload, metadata, function(err, downloadUrl) {
+                augmenciaApi.api.GetContentDownloadUrl(msg.payload, metadata, function(err, downloadUrl) {
                   if (err) {
                     reject(err);
                   } else {
@@ -35,7 +35,7 @@ module.exports = function(RED) {
       else
       {
         node.on('input', function() {
-          node.error(config.services + " not found", msg);
+          node.error(config.api + " not found", msg);
         });
       }
   }

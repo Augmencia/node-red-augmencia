@@ -2,7 +2,7 @@
   "augmencia-override-ar-asset" : {
     "Override AR asset": "Override AR asset",
     "Name": "Name",
-    "Services": "Services",
+    "Api": "API",
     "AR asset overridden": "AR asset overridden"
   }
 }

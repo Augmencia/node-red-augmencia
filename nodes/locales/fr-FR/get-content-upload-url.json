@@ -2,7 +2,7 @@
   "augmencia-get-content-upload-url" : {
     "Get content upload URL": "Récupérer une URL de transfert de contenu",
     "Name": "Nom",
-    "Services": "Services",
+    "Api": "API",
     "Upload data": "Données de transfert"
   }
 }

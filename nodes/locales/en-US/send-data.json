@@ -2,7 +2,7 @@
   "augmencia-send-data" : {
     "Send data": "Send data",
     "Name": "Name",
-    "Services": "Services",
+    "Api": "API",
     "Success": "Success"
   }
 }

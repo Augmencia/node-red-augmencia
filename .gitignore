@@ -130,3 +130,5 @@ dist
 .pnp.*
 
 /node_red_data
+
+.DS_Store

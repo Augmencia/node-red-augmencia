@@ -2,6 +2,6 @@
   "augmencia-delete-project" : {
     "Delete project": "Supprimer un projet",
     "Name": "Nom",
-    "Services": "Services"
+    "Api": "API"
   }
 }

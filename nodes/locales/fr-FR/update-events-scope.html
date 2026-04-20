@@ -1,0 +1,27 @@
+<script type="text/markdown" data-help-name="augmencia-update-events-scope">
+Modifie le scope des événements.
+
+### Entrée
+
+: payload (UpdateEventsScopeRequest) : Le nouveau scope des évènements pour le `stream` spécifié
+
+### Sortie
+
+: payload (any) : L'entrée donnée
+
+### Types
+
+#### UpdateEventsScopeRequest
+: stream_id (string) : 
+: scope (Scope) : 
+
+#### Scope
+: projects (boolean) : 
+: assets (string[]) : The id of the projects from which we want assets events
+: ar_assets (ContextsIdsWithProjectId[]) : The id of the contexts from which we want AR assets events
+: data (string[]) : The id of the projects from which we want data events
+
+#### ContextsIdsWithProjectId
+: project_id (string) : 
+: contexts_ids (string[]) : 
+</script>

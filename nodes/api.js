@@ -5,19 +5,19 @@ module.exports = function(RED) {
 
   const PROTO_PATH = __dirname + '/../protos';
   const HEALTH_PROTO_PATH = PROTO_PATH + '/health';
-  const PROJECTS_PROTO_PATH = PROTO_PATH + '/projects';
+  const API_PROTO_PATH = PROTO_PATH + '/api';
 
-  const projectsPackageDefinition = protoLoader.loadSync(
-    PROJECTS_PROTO_PATH + "/projects-service.proto",
+  const apiPackageDefinition = protoLoader.loadSync(
+    API_PROTO_PATH + "/augmencia-api.proto",
     {
       keepCase: true,
       longs: String,
       enums: String,
       defaults: true,
       oneofs: true,
-      includeDirs: [PROJECTS_PROTO_PATH]
+      includeDirs: [API_PROTO_PATH]
     });
-  const projectsGrpcObject = grpc.loadPackageDefinition(projectsPackageDefinition);
+  const apiGrpcObject = grpc.loadPackageDefinition(apiPackageDefinition);
 
   const healthPackageDefinition = protoLoader.loadSync(
     HEALTH_PROTO_PATH + "/health.proto",
@@ -30,10 +30,10 @@ module.exports = function(RED) {
     });
   const healthGrpcObject = grpc.loadPackageDefinition(healthPackageDefinition);
 
-  const projectsServiceHostname = 'projects.augmencia.com'
-  const projectsServiceCredentials = grpc.ChannelCredentials.createSsl()
+  const apiHostname = 'api.augmencia.com'
+  const apiCredentials = grpc.ChannelCredentials.createSsl()
 
-  function ServicesNode(config) {
+  function ApiNode(config) {
     RED.nodes.createNode(this,config);
     const node = this;
     
@@ -43,10 +43,8 @@ module.exports = function(RED) {
     }).join(''));
     node.apiKeyPayload = JSON.parse(jsonPayload);
 
-    node.projectsService = new projectsGrpcObject.Augmencia.Protos.ProjectsService.ProjectsService(projectsServiceHostname, projectsServiceCredentials);
-    node.health = {
-      projectsService: new healthGrpcObject.grpc.health.v1.Health(projectsServiceHostname, projectsServiceCredentials)
-    }
+    node.api = new apiGrpcObject.Augmencia.Protos.AugmenciaApi(apiHostname, apiCredentials);
+    node.health = new healthGrpcObject.grpc.health.v1.Health(apiHostname, apiCredentials);
 
     node.limiter = new Bottleneck({
       maxConcurrent: 1,
@@ -54,13 +52,13 @@ module.exports = function(RED) {
     })
     
     node.on('close', function(done) {
-      node.projectsService.close();
-      node.health.projectsService.close();
+      node.api.close();
+      node.health.close();
       done();
     });
   }
   
-  RED.nodes.registerType("augmencia-services", ServicesNode, {
+  RED.nodes.registerType("augmencia-api", ApiNode, {
     credentials: {
       apiKey: {type:"password", required:true},
     }

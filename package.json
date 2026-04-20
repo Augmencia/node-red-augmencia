@@ -1,10 +1,10 @@
 {
   "name": "node-red-augmencia",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Communicate with Augmencia's API using Node-RED",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-container": "docker run -d -p 1880:1880 -v .:/augmencia -v ./node_red_data:/data -v ./gcodes:/gcodes --name node-red-augmencia nodered/node-red && docker exec -w /data node-red-augmencia npm install /augmencia",
+    "start-container": "docker run -d -p 1880:1880 -v .:/augmencia -v ./node_red_data:/data -v ./gcodes:/gcodes -v ./sdcard:/sdcard --name node-red-augmencia nodered/node-red && docker exec -w /data node-red-augmencia npm install /augmencia",
     "start-demo-container": "docker run -d -p 1880:1880 -v .:/augmencia --privileged -v ./node_red_data:/data -v ./gcodes:/gcodes -v \"/Volumes/NO NAME:/sdcard\" --name node-red-augmencia nodered/node-red && docker exec -w /data node-red-augmencia npm install /augmencia",
     "stop-container": "docker stop node-red-augmencia;docker rm node-red-augmencia",
     "restart-container": "docker restart node-red-augmencia",
@@ -24,28 +24,26 @@
   "license": "MIT",
   "node-red": {
     "nodes": {
-      "augmencia-services": "nodes/services.js",
+      "augmencia-api": "nodes/api.js",
       "augmencia-health-listener": "nodes/health-listener.js",
+      "augmencia-events-listener": "nodes/events-listener.js",
+      "augmencia-update-events-scope": "nodes/update-events-scope.js",
       "augmencia-get-projects": "nodes/get-projects.js",
-      "augmencia-projects-events-listener": "nodes/projects-events-listener.js",
       "augmencia-add-project": "nodes/add-project.js",
       "augmencia-update-project": "nodes/update-project.js",
       "augmencia-delete-project": "nodes/delete-project.js",
       "augmencia-get-assets": "nodes/get-assets.js",
-      "augmencia-assets-events-listener": "nodes/assets-events-listener.js",
       "augmencia-add-asset": "nodes/add-asset.js",
       "augmencia-update-asset": "nodes/update-asset.js",
       "augmencia-delete-asset": "nodes/delete-asset.js",
       "augmencia-get-ar-assets": "nodes/get-ar-assets.js",
-      "augmencia-ar-assets-events-listener": "nodes/ar-assets-events-listener.js",
       "augmencia-add-ar-asset": "nodes/add-ar-asset.js",
       "augmencia-update-ar-asset": "nodes/update-ar-asset.js",
       "augmencia-delete-ar-asset": "nodes/delete-ar-asset.js",
       "augmencia-override-ar-asset": "nodes/override-ar-asset.js",
       "augmencia-get-content-upload-url": "nodes/get-content-upload-url.js",
       "augmencia-get-content-download-url": "nodes/get-content-download-url.js",
-      "augmencia-send-data": "nodes/send-data.js",
-      "augmencia-data-listener": "nodes/data-listener.js"
+      "augmencia-send-data": "nodes/send-data.js"
     }
   },
   "devDependencies": {

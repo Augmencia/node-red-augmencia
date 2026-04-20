@@ -2,7 +2,7 @@
   "augmencia-update-ar-asset" : {
     "Update AR asset": "Update AR asset",
     "Name": "Name",
-    "Services": "Services",
+    "Api": "API",
     "AR asset": "AR asset"
   }
 }

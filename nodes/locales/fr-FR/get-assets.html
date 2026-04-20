@@ -12,121 +12,121 @@ Récupère les ressources associées à un projet Augmencia.
 ### Types
 
 #### Asset
+: item ("folder"|"context"|"image"|"text"|"object3D") : The asset's type
 : folder (Folder|undefined) : 
 : context (Context|undefined) : 
 : image (Image|undefined) : 
 : text (Text|undefined) : 
 : object3D (Object3D|undefined) : 
-: item ("folder"|"context"|"image"|"text"|"object3D") : The assets's type
 
 #### Folder
 : id (string) : 
 : name (string) : 
-: parentId (string) : 
-: creationDate (number) : Creation's unix timetstamp
-: modificationDate (number) : Last modification's unix timestamp
+: parent_id (string|undefined) : 
+: creation_date (number) : Creation's unix timetstamp
+: modification_date (number) : Last modification's unix timestamp
 
 #### Context
 : id (string) : 
 : name (string) : 
-: parentId (string) : 
-: creationDate (number) : Creation's unix timetstamp
-: modificationDate (number) : Last modification's unix timestamp
-: includedContextsIds (string[]) : 
-: trackableTypes (TrackableType[]) : 
-: trackedImagesIds (string[]) : 
-: arAssetOverrides (ARAssetOverride[]) : 
+: parent_id (string|undefined) : 
+: creation_date (number) : Creation's unix timetstamp
+: modification_date (number) : Last modification's unix timestamp
+: included_contexts_ids (string[]) : 
+: trackable_types (TrackableType[]) :
+: tracked_images_ids (string[]) :
+: ar_asset_overrides (ARAssetOverride[]) :
 
-### Image
+#### Image
 : id (string) : 
 : name (string) : 
-: parentId (string) : 
-: creationDate (number) : Creation's unix timetstamp
-: modificationDate (number) : Last modification's unix timestamp
+: parent_id (string|undefined) : 
+: creation_date (number) : Creation's unix timetstamp
+: modification_date (number) : Last modification's unix timestamp
 : content (Content) : 
 
-### Text
+#### Text
 : id (string) : 
 : name (string) : 
-: parentId (string) : 
-: creationDate (number) : Creation's unix timetstamp
-: modificationDate (number) : Last modification's unix timestamp
+: parent_id (string|undefined) : 
+: creation_date (number) : Creation's unix timetstamp
+: modification_date (number) : Last modification's unix timestamp
 : text (string) : 
 
-### Object3D
+#### Object3D
 : id (string) : 
 : name (string) : 
-: parentId (string) : 
-: creationDate (number) : Creation's unix timetstamp
-: modificationDate (number) : Last modification's unix timestamp
+: parent_id (string|undefined) : 
+: creation_date (number) : Creation's unix timetstamp
+: modification_date (number) : Last modification's unix timestamp
 : content (Content) : 
 
-#### ARAssetOverride
-: arAssetId (string) : 
-: contextId (string) : 
-: creationDate (number) : Creation's unix timetstamp
-: modificationDate (number) : Last modification's unix timestamp
+#### ARAssetOverride 
+: ar_asset_id (string) : 
+: context_id (string) : 
+: creation_date (number) : 
+: modification_date (number) : 
 : loop (AnimationLoop) : 
-: states (ARAssetState[]) :
-: goToContextOnClick (string) : 
-: goToUrlOnClick (string) : 
-: dataToSendOnClick (string[]) : 
+: states (ARAssetState[]) : 
+: go_to_context_on_click (string) : 
+: go_to_url_on_click (string) : 
+: data_to_send_on_click (string[]) : 
 
-### ARAssetState
-: localPosition(Vector3) : 
-: localRotation(Vector4) : 
-: localScale(Vector3) : 
-: anchor(Vector2) : 
-: color(Color) : 
-: nextStateInMs(number) : 
+#### ARAssetState
+: local_position (Vector3) : 
+: local_rotation (Vector4) : 
+: local_scale (Vector3) : 
+: anchor (Vector2) : 
+: color (Color) : 
+: next_state_in_ms (number) : 
 
-### Vector2
-: x(number) : 
-: y(number) : 
+#### Vector2
+: x (number) : 
+: y (number) : 
 
-### Vector3
-: x(number) : 
-: y(number) : 
-: z(number) : 
+#### Vector3
+: x (number) : 
+: y (number) : 
+: z (number) : 
 
-### Vector4
-: x(number) : 
-: y(number) : 
-: z(number) : 
-: w(number) : 
+#### Vector4
+: w (number) : 
+: x (number) : 
+: y (number) : 
+: z (number) : 
 
-### Color
-: r(number) : Value between [0,1]
-: g(number) : Value between [0,1]
-: b(number) : Value between [0,1]
-: a(number) : Value between [0,1]
+#### Color
+: r (number) : 
+: g (number) : 
+: b (number) : 
+: a (number) : 
 
-### Content
-: id (string|undefined) : The id of the content hosted by Augmencia
-: url (string|undefined) : The url of the content (if not hosted by Augmencia)
-: data("id"|"url") : The content's type
+#### Content
+: data ("id"|"url") : 
+: id (string) : 
+: url (string) : 
 
 ```
 enum TrackableType {
-  QRCode = 0;
-  AprilTag16h5 = 1;
-  AprilTag25h9 = 2;
-  AprilTag36h10 = 3;
-  AprilTag36h11 = 4;
-  AprilTagCircle21h7 = 5;
-  AprilTagCircle49h12 = 6;
-  AprilTagCustom48h12 = 7;
-  AprilTagStandard41h12 = 8;
-  AprilTagStandard52h13 = 9;
-  MarkerlessImage = 10;
+    QR_CODE = 0;
+    APRILTAG_16H5 = 1;
+    APRILTAG_25H9 = 2;
+    APRILTAG_36H10 = 3;
+    APRILTAG_36H11 = 4;
+    APRILTAG_CIRCLE21H7 = 5;
+    APRILTAG_CIRCLE49H12 = 6;
+    APRILTAG_CUSTOM48H12 = 7;
+    APRILTAG_STANDARD41H12 = 8;
+    APRILTAG_STANDARD52H13 = 9;
+    MARKERLESS_IMAGE = 10;
 }
 ```
 
 ```
 enum AnimationLoop {
-  None = 0;
-  Restart = 1;
-  Yoyo = 2;
+    NONE = 0;
+    RESTART = 1;
+    YOYO = 2;
 }
 ```
 </script>

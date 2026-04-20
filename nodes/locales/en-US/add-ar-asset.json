@@ -2,7 +2,7 @@
   "augmencia-add-ar-asset" : {
     "Add AR asset": "Add AR asset",
     "Name": "Name",
-    "Services": "Services",
+    "Api": "API",
     "AR asset": "AR asset"
   }
 }

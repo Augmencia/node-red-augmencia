@@ -1,6 +1,6 @@
 {
   "augmencia-health-listener" : {
     "Health": "Etat de santé",
-    "Services": "Services"
+    "Api": "API"
   }
 }

@@ -2,6 +2,6 @@
   "augmencia-delete-asset" : {
     "Delete asset": "Delete asset",
     "Name": "Name",
-    "Services": "Services"
+    "Api": "API"
   }
 }

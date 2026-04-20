@@ -4,23 +4,23 @@ module.exports = function(RED) {
   function HealthListenerNode(config) {
     RED.nodes.createNode(this,config);
     const node = this;
-    const augmenciaServices = RED.nodes.getNode(config.services);
-    if (augmenciaServices)
+    const augmenciaApi = RED.nodes.getNode(config.api);
+    if (augmenciaApi)
     {
       let stream;
       let timeout;
       let isClosed = false;
       const metadata = new grpc.Metadata();
-      metadata.set('Authorization', `Bearer ${augmenciaServices.credentials.apiKey}`);
+      metadata.set('Authorization', `Bearer ${augmenciaApi.credentials.apiKey}`);
       (function subscribeToHealth() {
         stream = undefined;
-        augmenciaServices.limiter.schedule(() => new Promise((resolve, reject) => {
+        augmenciaApi.limiter.schedule(() => new Promise((resolve, reject) => {
           if (isClosed) {
             resolve();
             return;
           }
           node.status({fill:'grey',shape:'ring',text:'node-red:common.status.connecting'})
-          stream = augmenciaServices.health.projectsService.Watch({service: ''})
+          stream = augmenciaApi.health.Watch({service: ''})
             .on('data', function({status}) {
               if (!isClosed) {
                 node.send({
@@ -39,7 +39,7 @@ module.exports = function(RED) {
             })
             .on('error', function(e) {
               if (!isClosed) {
-                node.error(e, msg);
+                node.error(e);
               }
             });
         }))
@@ -56,7 +56,7 @@ module.exports = function(RED) {
     else
     {
       node.on('input', function() {
-        node.error(config.services + " not found", msg);
+        node.error(config.api + " not found");
       });
     }
   }

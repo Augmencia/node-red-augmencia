@@ -4,18 +4,18 @@ module.exports = function(RED) {
   function GetProjectsNode(config) {
       RED.nodes.createNode(this,config);
       const node = this;
-      const augmenciaServices = RED.nodes.getNode(config.services);
-      if (augmenciaServices)
+      const augmenciaApi = RED.nodes.getNode(config.api);
+      if (augmenciaApi)
       {
         node.on('input', async function(msg) {
           try
           {
-            await augmenciaServices.limiter.schedule(() => new Promise((resolve, reject) => {
+            await augmenciaApi.limiter.schedule(() => new Promise((resolve, reject) => {
               const projects = [];
               let error = undefined;
               const metadata = new grpc.Metadata();
-              metadata.set('Authorization', `Bearer ${augmenciaServices.credentials.apiKey}`);
-              augmenciaServices.projectsService.GetProjects({}, metadata)
+              metadata.set('Authorization', `Bearer ${augmenciaApi.credentials.apiKey}`);
+              augmenciaApi.api.GetProjects({}, metadata)
                 .on('status', function(status) {
                   if (status.code === 0) {
                     resolve();
@@ -50,7 +50,7 @@ module.exports = function(RED) {
       else
       {
         node.on('input', function() {
-          node.error(config.services + " not found", msg);
+          node.error(config.api + " not found", msg);
         });
       }
   }

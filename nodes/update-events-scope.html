@@ -1,0 +1,31 @@
+<script type="text/javascript">
+  RED.nodes.registerType('augmencia-update-events-scope',{
+    category: 'augmencia',
+    color: '#c1ade5',
+    defaults: {
+      name: {value:""},
+      api: {value:"", type:"augmencia-api", required: true},
+    },
+    inputs: 1,
+    outputs: 1,
+    align: 'left',
+    icon: "font-awesome/fa-list-ul",
+    paletteLabel: function() {
+      return this._("augmencia-update-events-scope.Update events scope")
+    },
+    label: function() {
+        return this.name||this._("augmencia-update-events-scope.Update events scope");
+    }
+  });
+</script>
+
+<script type="text/html" data-template-name="augmencia-update-events-scope">
+  <div class="form-row">
+      <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="augmencia-update-events-scope.Name"/></label>
+      <input type="text" id="node-input-name" data-i18n="[placeholder]augmencia-update-events-scope.Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-api"><i class="fa fa-cube"></i> Augmencia</label>
+    <select id="node-input-api" data-i18n="[placeholder]augmencia-update-events-scope.Api">
+  </div>
+</script>

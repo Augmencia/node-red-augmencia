@@ -2,7 +2,7 @@
   "augmencia-update-project" : {
     "Update project": "Update project",
     "Name": "Name",
-    "Services": "Services",
+    "Api": "API",
     "Project": "Project"
   }
 }
