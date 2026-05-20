@@ -30,9 +30,6 @@ module.exports = function(RED) {
     });
   const healthGrpcObject = grpc.loadPackageDefinition(healthPackageDefinition);
 
-  const apiHostname = 'api.augmencia.com'
-  const apiCredentials = grpc.ChannelCredentials.createSsl()
-
   function ApiNode(config) {
     RED.nodes.createNode(this,config);
     const node = this;
@@ -43,6 +40,8 @@ module.exports = function(RED) {
     }).join(''));
     node.apiKeyPayload = JSON.parse(jsonPayload);
 
+    const [apiScheme, apiHostname] = config.serverUrl.split('://');
+    const apiCredentials = apiScheme === 'https' ? grpc.ChannelCredentials.createSsl() : grpc.ChannelCredentials.createInsecure()
     node.api = new apiGrpcObject.Augmencia.Protos.AugmenciaApi(apiHostname, apiCredentials);
     node.health = new healthGrpcObject.grpc.health.v1.Health(apiHostname, apiCredentials);
 
